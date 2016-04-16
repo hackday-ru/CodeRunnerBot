@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+$app->get('register-webhook', function () {
+
+});
+
+$app->post(env('API_KEY') . '/webhook', function () {
+
+});
