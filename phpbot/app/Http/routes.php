@@ -15,10 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('register-webhook', function () {
+Route::get('register-webhook', [
+    'as' => 'register.webhook',
+    'uses' => 'Telegram@setWebhook'
+]);
 
-});
-
-Route::post(env('API_KEY') . '/webhook', function () {
+Route::post(env('TELEGRAM_BOT_TOKEN') . '/webhook', function () {
 
 });
