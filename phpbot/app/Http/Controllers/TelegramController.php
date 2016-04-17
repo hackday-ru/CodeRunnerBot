@@ -11,14 +11,23 @@ class TelegramController extends Controller
 
     public function setWebhook()
     {
-		Telegram::setWebhook([
+		$result = Telegram::setWebhook([
 		  'url' => env('HOOK_URL'),
 		  'certificate' => base_path(env('SSL_CERT'))
 		]);
+
+		dump($result);
     }
 
     public function handleWebhook()
     {
 
+		$update = Telegram::commandsHandler(true);
+
+		// Commands handler method returns an Update object.
+		// So you can further process $update object 
+		// to however you want.
+
+		return 'ok';
     }
 }
