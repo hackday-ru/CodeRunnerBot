@@ -34,7 +34,6 @@ $app->post(env('API_KEY') . '/webhook', function () {
 try {
     // Create Telegram API object
     $telegram = new Longman\TelegramBot\Telegram(env('API_KEY'), env('BOT_NAME'));
-    $telegram->addCommandsPath(base_path(env('COMMAND_PATH')));
 
     // Handle telegram webhook request
 	$telegram->handle();

@@ -12,30 +12,27 @@ namespace Longman\TelegramBot\Commands\UserCommands;
 
 use Longman\TelegramBot\Commands\UserCommand;
 use Longman\TelegramBot\Request;
-
 /**
- * User "/eval" command
+ * User "/helloworld" command
  */
-class EvalCommand extends UserCommand
+class HelloWorldCommand extends UserCommand
 {
     /**#@+
      * {@inheritdoc}
      */
-    protected $name = 'eval';
-    protected $description = 'Evaluate your code';
-    protected $usage = '/eval <language>:<code>';
+    protected $name = 'helloworld';
+    protected $description = 'Returns simple code for specified language';
+    protected $usage = '/helloworld <language>';
     protected $version = '1.0.1';
     protected $public = true;
     /**#@-*/
 
-    private function evalCode($language, $code)
+    private function getHelloWorld($language)
     {
         $ch = curl_init();
         $curlConfig = [
-            CURLOPT_URL            => 'http://46.101.237.169:40049/api/compile',
+            CURLOPT_URL            => 'http://46.101.237.169:40049/api/hello?lang=' . $language,
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_POST           => 2,
-            CURLOPT_POSTFIELDS     => http_build_query(['lang' => $language, 'code' => $code])
         ];
 
         curl_setopt_array($ch, $curlConfig);
@@ -47,9 +44,7 @@ class EvalCommand extends UserCommand
         }
         curl_close($ch);
 
-        $decode = json_decode($response, true);
-
-        return isset($decode['result']) ? $decode['result'] : '';
+        return $response;
     }
 
     /**
@@ -58,19 +53,18 @@ class EvalCommand extends UserCommand
     public function execute()
     {
         $message = $this->getMessage();
-
         $chat_id = $message->getChat()->getId();
         $text = $message->getText(true);
 
-        if (preg_match('/(?<language>[^:]+):(?<code>.+)/s', $text, $parts)) {
-            $text = $this->evalCode($parts['language'], $parts['code']);
+        if (!empty($text)) {
+            $text = $this->getHelloWorld($text);
         } else {
-            $text = 'You must use following format: /eval <language>:<code>';
+            $text = 'You must use following format: /helloworld <language>';
         }
 
         $data = [
-            'chat_id'             => $chat_id,
-            'text'                => $text,
+            'chat_id' => $chat_id,
+            'text'    => $text,
         ];
 
         return Request::sendMessage($data);
