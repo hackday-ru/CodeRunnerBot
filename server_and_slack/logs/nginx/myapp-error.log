@@ -1,0 +1,1 @@
+2016/04/16 13:45:29 [error] 10#10: *2 FastCGI sent in stderr: "Primary script unknown" while reading response header from upstream, client: 176.59.3.57, server: 46.101.237.169, request: "GET / HTTP/1.1", upstream: "fastcgi://172.17.0.9:9000", host: "46.101.237.169:32771"

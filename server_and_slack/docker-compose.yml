@@ -1,0 +1,111 @@
+api_source:
+    build: api_source
+    container_name: api_source
+    ports:
+        - "40051:22"
+    env_file:
+        - 'api_source/.environment'
+    volumes:
+        - ./source:/home/coderunner/source/
+        - /var/run/docker.sock:/var/run/docker.sock
+        - ./compile:/compile
+
+api_php:
+    build: api_php
+    container_name: api_php
+    ports:
+        - "9000"
+    volumes_from:
+        - api_source
+
+api_nginx:
+    build: api_nginx
+    container_name: api_nginx
+    ports:
+        - "40050:80"
+    links:
+        - api_php
+    volumes_from:
+        - api_source
+    env_file:
+        - 'api_nginx/.environment'
+    volumes:
+        - ./logs/nginx/:/var/log/nginx
+
+php_5:
+  image: php:5-fpm
+  container_name: php_5
+  volumes_from:
+    - api_source
+
+php_7:
+  image: php:7-fpm
+  container_name: php_7
+  volumes_from:
+    - api_source
+
+go_1:
+  build: go_1
+  container_name: go_1
+  volumes_from:
+    - api_source
+
+node_5:
+  build: node_5
+  container_name: node_5
+  volumes_from:
+    - api_source
+
+ruby_2:
+  build: ruby_2
+  container_name: ruby_2
+  volumes_from:
+    - api_source
+
+haskell_7:
+  build: haskell_7
+  container_name: haskell_7
+  volumes_from:
+    - api_source
+
+python_2:
+  build: python_2
+  container_name: python_2
+  volumes_from:
+    - api_source
+
+python_3:
+  build: python_3
+  container_name: python_3
+  volumes_from:
+    - api_source
+
+java_7:
+  build: java_7
+  container_name: java_7
+  volumes_from:
+    - api_source
+
+java_8:
+  build: java_8
+  container_name: java_8
+  volumes_from:
+    - api_source
+
+java_9:
+  build: java_9
+  container_name: java_9
+  volumes_from:
+    - api_source
+
+erlang_17:
+  build: erlang_17
+  container_name: erlang_17
+  volumes_from:
+    - api_source
+
+erlang_18:
+  build: erlang_18
+  container_name: erlang_18
+  volumes_from:
+    - api_source
