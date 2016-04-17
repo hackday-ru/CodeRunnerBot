@@ -9,6 +9,17 @@ use \Telegram;
 class TelegramController extends Controller
 {
 
+	public function testBot()
+	{
+		$response = Telegram::getMe();
+
+		dump([
+			'botId' => $response->getId(),
+			'firstName' => $response->getFirstName(),
+			'username' => $response->getUsername(),
+		]);
+	}
+
     public function setWebhook()
     {
 		$result = Telegram::setWebhook([
@@ -30,4 +41,5 @@ class TelegramController extends Controller
 
 		return 'ok';
     }
+
 }

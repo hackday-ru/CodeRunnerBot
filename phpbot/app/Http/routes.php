@@ -15,12 +15,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('test', [
+    'as' => 'bot.test',
+    'uses' => 'TelegramController@testBot'
+]);
+
 Route::get('register-webhook', [
-    'as' => 'register.webhook',
+    'as' => 'webhook.register',
     'uses' => 'TelegramController@setWebhook'
 ]);
 
 Route::post(env('TELEGRAM_BOT_TOKEN') . '/webhook', [
-    'as' => 'register.webhook',
+    'as' => 'webhook.handle',
     'uses' => 'TelegramController@handleWebhook'
 ]);
