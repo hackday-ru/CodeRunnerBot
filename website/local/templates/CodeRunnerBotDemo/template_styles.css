@@ -1,0 +1,30 @@
+html{
+	font-family: 'Open Sans', sans-serif;
+	height: 100%;
+}
+
+body{
+	background: url('images/main-background.png') repeat;
+}
+
+header{
+	height: 200px;
+	font-size: 50px;
+	text-align: center;
+	line-height: 200px;
+	color: white;
+}
+
+#page-wrapper{
+	max-width: 1200px;
+	min-width: 980px;
+	margin: 0 auto;
+	height: auto !important;
+}
+
+footer{
+	height: 50px;
+	text-align: center;
+	color:white;
+	font-size: 80%;
+}

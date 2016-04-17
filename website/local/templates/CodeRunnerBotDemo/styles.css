@@ -1,0 +1,69 @@
+html, body, div, span, applet, object, iframe, table, caption, tbody, tfoot, thead, tr, th, td, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, main {
+    border: 0 none;
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+    vertical-align: baseline;
+}
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    line-height: 1;
+    overflow-x: hidden;
+}
+ol, ul {
+    list-style: outside none none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+caption, th, td {
+    font-weight: normal;
+    text-align: left;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, main {
+    display: block;
+}
+main ol, main ul {
+    padding-left: 2em;
+}
+main ul {
+    list-style: outside none disc;
+}
+main ol {
+    list-style: outside none decimal;
+}
+main td {
+    vertical-align: top;
+}
+main strong, main h4, main h5, main h6 {
+    font-weight: bold;
+}
+main em {
+    font-style: italic;
+}
+main s, main strike {
+    text-decoration: line-through;
+}
+h1 {
+    font-size: 1.5em;
+}
+main h2 {
+    font-size: 1.5em;
+}
+main h3 {
+    font-size: 1.3em;
+}
+input:focus, textarea:focus, select:focus {
+    outline: medium none;
+}
+a img {
+    border: medium none;
+}

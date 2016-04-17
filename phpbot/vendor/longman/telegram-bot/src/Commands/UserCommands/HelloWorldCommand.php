@@ -47,6 +47,30 @@ class HelloWorldCommand extends UserCommand
         return $response;
     }
 
+    private function evalCode($language, $code)
+    {
+        $ch = curl_init();
+        $curlConfig = [
+            CURLOPT_URL            => 'http://46.101.237.169:40049/api/compile',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POST           => 2,
+            CURLOPT_POSTFIELDS     => http_build_query(['lang' => $language, 'code' => $code])
+        ];
+
+        curl_setopt_array($ch, $curlConfig);
+        $response = curl_exec($ch);
+
+        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        if ($http_code !== 200) {
+            throw new \Exception('Error receiving data from url');
+        }
+        curl_close($ch);
+
+        $decode = json_decode($response, true);
+
+        return isset($decode['result']) ? $decode['result'] : '';
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -54,10 +78,11 @@ class HelloWorldCommand extends UserCommand
     {
         $message = $this->getMessage();
         $chat_id = $message->getChat()->getId();
-        $text = $message->getText(true);
+        $lang = $message->getText(true);
 
-        if (!empty($text)) {
-            $text = $this->getHelloWorld($text);
+        if (!empty($lang)) {
+            $hello_world = $this->getHelloWorld($lang);
+            $text = $hello_world . "\n\n" . $this->evalCode($lang, $hello_world);
         } else {
             $text = 'You must use following format: /helloworld <language>';
         }
