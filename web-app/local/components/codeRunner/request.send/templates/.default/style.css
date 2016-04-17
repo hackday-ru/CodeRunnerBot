@@ -1,0 +1,48 @@
+#input-form{
+	width:800px;
+	margin:20px auto;
+	text-align:left;
+	background: rgba(255, 255, 255, 0.6);
+	padding: 40px 30px;
+	border: 15px solid rgb(255, 201, 14);
+	border-radius: 7px;
+}
+
+.input-field-description{
+	font-size: 30px;
+	margin-bottom: 36px;
+}
+
+#two-description{
+	display: none;
+}
+
+#input-field,
+#result-block{
+	width: 759px;
+	height: 200px;
+	margin-bottom: 20px;
+	font-size: 15px;
+	padding: 10px;
+	border: 10px solid rgba(195, 195, 195, 0.6);
+	border-radius: 7px;
+}
+
+#result-block{
+	display:none;
+}
+
+#input-select{
+	width: 375px;
+	margin-right: 25px;
+	height: 40px;
+}
+
+#submit-field{
+	width:400px;
+	height: 44px;
+}
+
+#code-templates{
+	display:none;
+}
