@@ -1,0 +1,42 @@
+html{
+	font-family: 'Open Sans', sans-serif;
+	height: 100%;
+}
+
+body{
+	background: url('images/main-background.png') repeat;
+}
+
+header{
+	height: 200px;
+	font-size: 50px;
+	text-align: center;
+	line-height: 200px;
+	color: white;
+	position: relative;
+}
+
+#site-logo{
+	width:604px;
+	height:44px;
+	background: url('images/title.jpg') center center no-repeat #fff;
+	border:11px solid #fff;
+	border-radius: 7px;
+	position: absolute;
+	top:71px;
+	left: 277px;
+}
+
+#page-wrapper{
+	max-width: 1200px;
+	min-width: 980px;
+	margin: 0 auto;
+	height: auto !important;
+}
+
+footer{
+	height: 50px;
+	text-align: center;
+	color:white;
+	font-size: 80%;
+}
