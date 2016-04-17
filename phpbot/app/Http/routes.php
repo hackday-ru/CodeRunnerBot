@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::get('register-webhook', [
     'as' => 'register.webhook',
-    'uses' => 'Telegram@setWebhook'
+    'uses' => 'TelegramController@setWebhook'
 ]);
 
 Route::post(env('TELEGRAM_BOT_TOKEN') . '/webhook', function () {
