@@ -1,10 +1,4 @@
-<? 
-define('STOP_STATISTICS', true);
-define('NO_AGENT_STATISTIC','Y');
-define('NO_AGENT_CHECK', true);
-define('DisableEventsCheck', true);
-require ($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/prolog_before.php');
-
+<?
 $response['request'] = $_REQUEST;
 
 $context = stream_context_create(
